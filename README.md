@@ -1,2 +1,0 @@
-# Group Java Peg Game
-
