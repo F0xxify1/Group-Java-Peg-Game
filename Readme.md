@@ -1,14 +1,14 @@
-#Java Peg Game
-#####This is our group's Peg Game coded in Java.
-#####2/24/2020
-#####For use with BlueJ
-#AUTHORS:
-##Blake Fox, Jacob Directo, Cooper Hornstrom
-##If used, please give credit to the respective coders :D
-##Prereqesites:
+# Java Peg Game
+##### This is our group's Peg Game coded in Java.
+##### 2/24/2020
+##### For use with BlueJ
+# AUTHORS:
+## Blake Fox, Jacob Directo, Cooper Hornstrom
+## If used, please give credit to the respective coders :D
+## Prereqesites:
 1. You need to have downloaded and installed your preferred version of BlueJ
 
-##To Open:
+## To Open:
 
 1. Via BlueJ Team:
 	1. Open BlueJ
@@ -24,7 +24,7 @@
 	3. In BlueJ, drag and drop all of the .java files
 	4. You're good to go!
 
-##To Update:
+## To Update:
 
 1. Select: Tools -> Team -> Update Repository
 2. Enter the required information (you need access by me to update this project)
