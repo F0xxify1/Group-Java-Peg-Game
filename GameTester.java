@@ -10,7 +10,8 @@ public class GameTester
     
     public static void main(String[] args)
     {
-        hi
+        Graphics graph = new Graphics();
+        graph.buildTile();
     }
     
 }
