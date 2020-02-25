@@ -6,9 +6,9 @@ public class TileListener implements ActionListener
         public void actionPerformed(ActionEvent e)
         {
             JButton temp = (JButton) e.getSource();
-            if (temp.getBackground() == Color.yellow)
-                temp.setBackground(Color.BLACK);
+            if (temp.getBackground() == Color.WHITE)
+                temp.setBackground(Color.YELLOW);
             else
-                temp.setBackground(Color.yellow);
+                temp.setBackground(Color.WHITE);
         }
     }
