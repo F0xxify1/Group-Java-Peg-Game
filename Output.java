@@ -13,7 +13,7 @@ public class Output
     public static final int ROW = 4;
     public static final int COL = 7;
     public static final Color DEF_COLOR = Color.WHITE;
-    private JButton[][] buttons = new JButton[ROW][COL]; //Declared much earlier in the program, right after the class declaration.
+    private JButton[][] buttons = new JButton[COL][ROW]; //Declared much earlier in the program, right after the class declaration.
     private int[] arrayTo2DConversion = new int[]{3, 9, 11, 15, 17, 19, 21, 23, 25, 27};
     
     public Output()
@@ -69,7 +69,7 @@ public class Output
         {
             for(int c = 0; c < COL; c++)
             {
-                if(
+                if(true)
                 i ++;
             }
         }
