@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Arrays;
 import javax.swing.*;
 /**
  * Write a description of class Output here.
@@ -10,15 +11,16 @@ public class Output
 {
     JFrame frame = new JFrame("Peg Game");
     JPanel panel = new JPanel();
-    public static final int ROW = 4;
-    public static final int COL = 7;
+    public static final int ROW = 5;
+    public static final int COL = 9;
     public static final Color DEF_COLOR = Color.WHITE;
-    private JButton[][] buttons = new JButton[COL][ROW]; //Declared much earlier in the program, right after the class declaration.
-    private int[] arrayTo2DConversion = new int[]{3, 9, 11, 15, 17, 19, 21, 23, 25, 27};
+    public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
+    public static final int NULL_BUTTON_VALUE = 0;
+    private JButton[][] buttons = new JButton[COL][ROW];
     
     public Output()
     {
-        frame.setSize(900, 700);
+        frame.setSize(700, 700);
         frame.add(panel);
     }
     
@@ -32,7 +34,8 @@ public class Output
             for(int c = 0; c < COL; c++)
             {
                 buttons[c][r] = getDefButton();
-                buttons[c][r].setText(String.valueOf(buttonNum));
+                if(!Arrays.asList(ARRAY_TO_2D).contains(buttonNum))
+                    buttons[c][r].setText(String.valueOf(buttonNum));
                 panel.add(buttons[c][r]);
                 buttonNum ++;
             }
@@ -76,5 +79,10 @@ public class Output
         
         
         return array2D;
+    }
+    
+    public int GetNullButtonValue()
+    {
+        return NULL_BUTTON_VALUE;
     }
 }
