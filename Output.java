@@ -13,9 +13,10 @@ public class Output
     JPanel panel = new JPanel();
     public static final int ROW = 5;
     public static final int COL = 9;
-    public static final Color DEF_COLOR = Color.WHITE;
+    public static final Color DEF_COLOR = Color.BLACK;
+    public static final Color PEG_COLOR = Color.YELLOW;
+    public static final Color CLK_COLOR = Color.WHITE;
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
-    public static final int NULL_BUTTON_VALUE = 0;
     private JButton[][] buttons = new JButton[COL][ROW];
     
     public Output()
@@ -26,16 +27,19 @@ public class Output
     
     public void buildTile()
     {
-        
         int buttonNum = 0;
         panel.setLayout(new GridLayout(ROW, COL));
         for(int r = 0; r < ROW; r++)
         {
             for(int c = 0; c < COL; c++)
             {
-                buttons[c][r] = getDefButton();
-                if(!Arrays.asList(ARRAY_TO_2D).contains(buttonNum))
-                    buttons[c][r].setText(String.valueOf(buttonNum));
+                buttons[c][r] = this.getDefButton();
+                if (!arrayTo2DContains(buttonNum)) 
+                    buttons[c][r].setEnabled(false);
+                else {
+                    buttons[c][r].setBackground(PEG_COLOR);
+                    buttons[c][r].setForeground(buttons[c][r].getBackground());
+                }
                 panel.add(buttons[c][r]);
                 buttonNum ++;
             }
@@ -51,8 +55,8 @@ public class Output
     public JButton getDefButton()
     {
         JButton temp = new JButton();
-        temp.setBackground(Color.WHITE);
-        temp.setForeground(Color.LIGHT_GRAY);
+        temp.setBackground(DEF_COLOR);
+        temp.setForeground(temp.getBackground());
         temp.addActionListener(new TileListener());
         temp.setBorderPainted(false);
         return temp;
@@ -81,8 +85,11 @@ public class Output
         return array2D;
     }
     
-    public int GetNullButtonValue()
-    {
-        return NULL_BUTTON_VALUE;
+    public boolean arrayTo2DContains(int temp){
+        for (int element : ARRAY_TO_2D) {
+            if (element == temp)
+                return true;
+        }
+        return false;
     }
 }
