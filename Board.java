@@ -20,13 +20,7 @@ public class Board
 
     public void setPosition(int position)
     {
-        for(int i = 0; i<pegPositions.length; i++)
-        {
-            if(pegPositions.length==15)
-            {
-                position = pegPositions.length;
-            }
-        }
+
     }
 
     public int getPosition(int position)
