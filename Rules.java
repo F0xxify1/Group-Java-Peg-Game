@@ -1,32 +1,22 @@
-/**
- * Write a description of class Rules here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
+import javax.swing;
 public class Rules
 {
-    // instance variables - replace the example below with your own
-    private int x;
-
-    /**
-     * Constructor for objects of class Rules
-     */
+    String winner;
+    
     public Rules()
     {
-        // initialise instance variables
-        x = 0;
+    }
+    
+    public boolean isWinner()
+    {
+      boolean winner = false;
+   
+    }
+    
+    public boolean canMove()
+    {
+        for(int i=0; i < 15; i++)
+        
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }

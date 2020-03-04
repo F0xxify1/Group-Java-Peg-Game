@@ -9,19 +9,29 @@ import java.awt.*;
  */
 public class Board
 {
-    
+
+    boolean[] pegPositions = new boolean[15]; 
     /**
      * Constructor for objects of class Board
      */
     public Board()
     {
     }
-    
-    boolean[] row1 = new boolean[1];
-    boolean[] row2 = new boolean[2];
-    boolean[] row3 = new boolean[3];
-    boolean[] row4 = new boolean[4];
-    boolean[] row5 = new boolean[5];
-   
-    
+
+    public void setPosition(int position)
+    {
+        for(int i = 0; i<pegPositions.length; i++)
+        {
+            if(pegPositions.length==15)
+            {
+                position = pegPositions.length;
+            }
+        }
+    }
+
+    public int getPosition(int position)
+    {
+        return position; 
+    }
 }
+
