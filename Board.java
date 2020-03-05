@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-
 /**
  * Write a description of class Board here.
  *
@@ -19,8 +18,8 @@ public class Board
     
     public void newBoard(int rows)
     {
-       int[][] pos = new int[rows + 2][rows + 2];
-       board = pos;
+       board = new int[rows + 2][rows + 2];
+       
         if(rows < 5)
        {
          System.out.print("invalid input");
@@ -31,7 +30,7 @@ public class Board
           {
              for(int b = 1; b <= a; b++)
              {
-               pos[b][a] = 1;
+               board[b][a] = 1;
              }
           }
        }
