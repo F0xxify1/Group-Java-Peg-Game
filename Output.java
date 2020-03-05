@@ -2,10 +2,10 @@ import java.awt.*;
 import java.util.Arrays;
 import javax.swing.*;
 /**
- * Write a description of class Output here.
+ * Graphics handler for the Java Peg Game
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Blake Fox
+ * @version 3/5/2020
  */
 public class Output
 {
@@ -92,4 +92,6 @@ public class Output
         }
         return false;
     }
+    
+    
 }

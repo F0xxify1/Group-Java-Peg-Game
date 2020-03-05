@@ -3,8 +3,8 @@ import java.awt.*;
 /**
  * Write a description of class Board here.
  *
- * @author Fox
- * @version 0.01A
+ * @author Jacob Directo
+ * @version 3/5/2020
  */
 public class Board
 {
