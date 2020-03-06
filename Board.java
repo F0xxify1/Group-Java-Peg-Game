@@ -9,8 +9,7 @@ import java.awt.*;
  */
 public class Board
 {
-
-    boolean[] pegPositions = new boolean[15]; 
+    int[][] board;
     /**
      * Constructor for objects of class Board
      */
@@ -18,14 +17,25 @@ public class Board
     {
     }
 
-    public void setPosition(int position)
+    public void newBoard(int rows)
     {
-
+       int[][] pos = new int[rows + 2][rows + 2];
+       board = pos;
+        if(rows < 5)
+       {
+         System.out.print("invalid input");
+       }
+       else
+       {
+          for(int a = 1; a <= rows; a++)
+          {
+             for(int b = 1; b <= a; b++)
+             {
+               pos[b][a] = 1;
+             }
+          }
+       }
     }
-
-    public int getPosition(int position)
-    {
-        return position; 
-    }
+    
 }
 
