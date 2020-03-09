@@ -6,10 +6,13 @@
  */
 public class Game
 {
+    public static final Output output = new Output();
+    public static final Board board = new Board();
+    public static final Rules rules = new Rules(board);
     public static void main(String[] args)
     {
-        Output graphics = new Output();
-        graphics.buildTile();
+        output.buildTile();
+        output.toggleVisible();
     }
     
 }

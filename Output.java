@@ -44,7 +44,6 @@ public class Output
                 buttonNum ++;
             }
         }
-        this.toggleVisible();
     }
     
     public void toggleVisible()
@@ -77,11 +76,9 @@ public class Output
             for(int c = 0; c < COL; c++)
             {
                 if(true)
-                i ++;
+                    i ++;
             }
         }
-        
-        
         return array2D;
     }
     
@@ -92,6 +89,5 @@ public class Output
         }
         return false;
     }
-    
     
 }
