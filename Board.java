@@ -8,7 +8,7 @@ import java.awt.*;
  */
 public class Board
 {
-    int[][] positions;
+    int[] positions;
     /**
      * Constructor for objects of class Board
      */
@@ -19,23 +19,15 @@ public class Board
 
     public void newBoard(int rows)
     {
-        if(rows > 4)
+        positions = new int[15];
+        positions[0] = 0;
+        for(int i = 1; i < positions.length; i++)
         {
-            System.out.print("invalid input");
-        }
-        else
-        {
-            for(int a = 0; a <= rows; a++)
-            {
-                for(int b = 0; b <= a; b++)
-                {
-                    positions[b][a] = 1;
-                }
-            }
+            positions[i] = 1;
         }
     }
     
-    public int[][] getPositions()
+    public int[] getPositions()
     {
         return positions;
     }
