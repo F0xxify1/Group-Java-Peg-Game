@@ -9,6 +9,7 @@ public class Rules
     public void makeMove(int fromRow, int fromCol, int toRow, int toCol)
     {
         String EMPTY= null;
+        Board board = new Board();
         board[toRow][toCol]=board[fromRow][fromCol];
         board[fromRow][toCol]=EMPTY;
         if(fromRow-toRow==2 || fromRow-toRow==-2)
