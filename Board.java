@@ -9,12 +9,13 @@ import java.awt.*;
 public class Board
 {
     int[] positions;
+    private Rules rules;
     /**
      * Constructor for objects of class Board
      */
-    public Board()
+    public Board(Rules inRules)
     {
-        
+        rules = inRules;
     }
 
     public void newBoard(int rows)
