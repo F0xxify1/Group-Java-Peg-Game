@@ -1,13 +1,9 @@
 
 public class Rules
 {
-    
     private static boolean[] pegsPresent = new boolean[15];
     private static String    blanks      = " ";
-    /* {a,b,c}                 */
-    /*   a = "from" position   */
-    /*   b = "to" position     */
-    /*   c = "jumped" position */
+    /* {"from", "to", "jumped"} */
     private static int jumpTable[][] = { {1,4,2}, {1,6,3}, {2,7,4}, {2,9,5},
     {3,8,5},  {3,10,6}, {4,6,5}, {4,1,2}, {4,11,7}, {4,13,8},
     {5,14,9}, {5,12,8}, {6,4,5}, {6,13,9}, {6,15,10}, {6,1,3}, 
@@ -33,8 +29,8 @@ public class Rules
         {
             if(fromCol - toCol == 2 || fromCol - toCol == -2)
             {
-                int jumpRow=(fromRow+toRow)/2;
-                int jumpCol=(fromCol+toCol)/2;
+                int jumpRow = (fromRow + toRow) / 2;
+                int jumpCol = (fromCol + toCol) / 2;
                 pos[jumpRow][jumpCol] = 0;
                 return true;
             }
@@ -63,13 +59,12 @@ public class Rules
     {
         boolean winner = false;
         int j;
-        for(int i=0; i<5; i++)
+        for(int i = 0; i < 5; i++)
         {
-            //if(canMakeMove() == false)
-            //{
-            //    int count;
-            //    count++;
-            //}
+            if(canMove(1,1,1,1) == false)
+            {
+                
+            }
         }
         return true;
 
