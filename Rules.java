@@ -15,7 +15,7 @@ public class Rules
 
     String winner;
     private Board board;
-    int[][] pos;
+    int[] pos;
     public Rules(Board inBoard)
     {
         board = inBoard;
