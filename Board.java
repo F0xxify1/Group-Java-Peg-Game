@@ -8,34 +8,37 @@ import java.awt.*;
  */
 public class Board
 {
-    int[][] board;
+    int[][] positions;
     /**
      * Constructor for objects of class Board
      */
     public Board()
     {
+        
     }
 
     public void newBoard(int rows)
     {
-        int[][] pos = new int[rows + 2][rows + 2];
-        board = pos;
-        if(rows < 5)
+        if(rows > 4)
         {
             System.out.print("invalid input");
         }
         else
         {
-            for(int a = 1; a <= rows; a++)
+            for(int a = 0; a <= rows; a++)
             {
-                for(int b = 1; b <= a; b++)
+                for(int b = 0; b <= a; b++)
                 {
-                    pos[b][a] = 1;
+                    positions[b][a] = 1;
                 }
             }
         }
     }
     
+    public int[][] getPositions()
+    {
+        return positions;
+    }
 }
 
 
