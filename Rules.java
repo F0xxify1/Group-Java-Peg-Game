@@ -14,13 +14,7 @@ public class Rules
             {13,11,12}, {13,4,8}, {14,12,13}, {14,5,9} };
 
     String winner;
-
-    private Board board;
-    int[] pos;
-    public Rules(Board inBoard)
-
     public Rules()
-
     {
         
     }  

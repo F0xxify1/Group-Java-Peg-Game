@@ -8,17 +8,11 @@ import java.awt.*;
  */
 public class Board
 {
-    int[] positions;
-    private Rules rules;
+    private int[] positions;
     /**
      * Constructor for objects of class Board
      */
-    public Board(Rules inRules)
-    {
-        rules = inRules;
-    }
-
-    public void newBoard(int rows)
+    public Board()
     {
         positions = new int[15];
         positions[0] = 0;
@@ -27,11 +21,15 @@ public class Board
             positions[i] = 1;
         }
     }
-    
-    public int[] getPositions()
+
+    public int getPosition(int pos)
     {
-        return positions;
+        return positions[pos];
+    }
+
+    public void setPosition(int pos, int value)
+    {
+        positions[pos] = value;
     }
 }
-
 
