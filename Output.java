@@ -61,11 +61,6 @@ public class Output
         return temp;
     }
     
-    public Color getDefColor()
-    {
-        return DEF_COLOR;
-    }
-    
     public boolean[][] arrayTo2D(boolean[] array)
     {
         boolean[][] array2D = new boolean[ROW][COL];
