@@ -5,7 +5,7 @@ import javax.swing.*;
  * Graphics handler for the Java Peg Game
  *
  * @author Blake Fox
- * @version 3/5/2020
+ * @finalversion 3/11/2020
  */
 public class Output
 {

@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 /**
- * Write a description of class Board here.
+ *Creates Board and sets and gets positions of pegs
  *
- * @author Jacob Directo
+ * @author Jacob Directo, Blake Fox, Cooper Hornstrom
  * @version 3/5/2020
  */
 public class Board

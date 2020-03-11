@@ -1,4 +1,10 @@
 
+/**
+ * Checks Rules for legal and illegal moves and winner
+ * 
+ * @author Jacob Directo and Blake Fox
+ * @finalVersion 3/11/2020
+ */
 public class Rules
 {
     private static boolean[] pegsPresent = new boolean[15];
