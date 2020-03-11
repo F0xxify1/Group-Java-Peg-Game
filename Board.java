@@ -1,33 +1,33 @@
 import javax.swing.*;
 import java.awt.*;
 /**
- * Write a description of class Board here.
+ *Creates Board and sets and gets positions of pegs
  *
- * @author Jacob Directo
- * @version 3/5/2020
+ * @author Jacob Directo, Blake Fox, Cooper Hornstrom
+ * @finalVersion 3/5/2020
  */
 public class Board
 {
-    private int[] positions;
+    private boolean[] positions;
     /**
      * Constructor for objects of class Board
      */
     public Board()
     {
-        positions = new int[15];
-        positions[0] = 0;
+        positions = new boolean[15];
+        positions[0] = false;
         for(int i = 1; i < positions.length; i++)
         {
-            positions[i] = 1;
+            positions[i] = true;
         }
     }
-
-    public int getPosition(int pos)
+    
+    public boolean getPosition(int pos)
     {
         return positions[pos];
     }
-
-    public void setPosition(int pos, int value)
+    
+    public void setPosition(int pos, boolean value)
     {
         positions[pos] = value;
     }

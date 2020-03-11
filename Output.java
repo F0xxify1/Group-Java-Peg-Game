@@ -5,7 +5,7 @@ import javax.swing.*;
  * Graphics handler for the Java Peg Game
  *
  * @author Blake Fox
- * @version 3/5/2020
+ * @finalVersion 3/11/2020
  */
 public class Output
 {
@@ -22,8 +22,11 @@ public class Output
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
     private JButton[][] buttons = new JButton[COL][ROW];
     
-    public Output()
+    private Board board;
+    
+    public Output(Board inBoard)
     {
+        board = inBoard;
         frame.setSize(700, 700);
         frame.add(panel);
     }
@@ -59,25 +62,14 @@ public class Output
         JButton temp = new JButton();
         temp.setBackground(DEF_COLOR);
         temp.setForeground(temp.getBackground());
-        temp.addActionListener(new TileListener());
+        temp.addActionListener(new TileListener(this, board));
         temp.setBorderPainted(false);
         return temp;
     }
     
-    public boolean[][] arrayTo2D(boolean[] array)
+    public JButton arrayTo2D()
     {
-        boolean[][] array2D = new boolean[ROW][COL];
-        int i = 0;
-        int j = 0;
-        for(int r = 0; r < ROW; r++)
-        {
-            for(int c = 0; c < COL; c++)
-            {
-                if(true)
-                    i ++;
-            }
-        }
-        return array2D;
+        for(int i = 0; i
     }
     
     public boolean arrayTo2DContains(int temp){
@@ -88,4 +80,17 @@ public class Output
         return false;
     }
     
+    public void setOutputToArray()
+    {
+        for(int i = 0; i < 15; i++){
+            JButton temp = 
+            if (board.getPosition(i) == false){
+                temp.setBackground(this.CLK_COLOR);
+            }else{
+                temp.setBackground(this.PEG_COLOR);
+            }
+            temp.setForeground(temp.getBackground());
+            
+        }
+    }
 }
