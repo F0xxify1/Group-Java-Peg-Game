@@ -69,7 +69,12 @@ public class Output
     
     public JButton arrayTo2D()
     {
-        for(int i = 0; i
+        for(int i = 0; i < (ROW * COL); i++)
+        {
+            for(int j = 0; j < (ROW * COL); j++)
+                return new JButton();
+        }
+        return new JButton();
     }
     
     public boolean arrayTo2DContains(int temp){
@@ -83,7 +88,7 @@ public class Output
     public void setOutputToArray()
     {
         for(int i = 0; i < 15; i++){
-            JButton temp = 
+            JButton temp = arrayTo2D();
             if (board.getPosition(i) == false){
                 temp.setBackground(this.CLK_COLOR);
             }else{
