@@ -4,7 +4,10 @@ import javax.swing.*;
 public class TileListener implements ActionListener
     {
         
-        
+        public TileListener()
+        {
+            
+        }
         
         public void actionPerformed(ActionEvent e)
         {

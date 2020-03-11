@@ -11,11 +11,14 @@ public class Output
 {
     JFrame frame = new JFrame("Peg Game");
     JPanel panel = new JPanel();
+    
     public static final int ROW = 5;
     public static final int COL = 9;
+    
     public static final Color DEF_COLOR = Color.BLACK;
     public static final Color PEG_COLOR = Color.YELLOW;
     public static final Color CLK_COLOR = Color.WHITE;
+    
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
     private JButton[][] buttons = new JButton[COL][ROW];
     

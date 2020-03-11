@@ -19,19 +19,19 @@ public class Rules
         
     }  
 
-    public int canMove(int fromPos, int toPos)
+    public boolean canMove(int fromPos, int toPos)
     {
         for(int i = 0; i < jumpTable.length; i++)
         {
             if(fromPos == jumpTable[i][0] && toPos == jumpTable[i][1])
-                return jumpTable[i][2]; // returns jumpPos
+                return true; // returns jumpPos
         }
-        return -1;
+        return false;
     }
 
     public void makeMove(int fromPos, int toPos)
     {
-        if (!(canMove(fromPos, toPos) == -1))
+        if ((canMove(fromPos, toPos)))
         {
             //make move
 
@@ -41,15 +41,14 @@ public class Rules
     public boolean isWinner()
     {
         boolean winner = false;
-        int j;
         for(int i = 0; i < 5; i++)
         {
-            if(!(canMove(0,3) == -1))
+            if(!(canMove(0,3)))
             {
                 
             }
         }
         return true;
-
+        
     }
 }
