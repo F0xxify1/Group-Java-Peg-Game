@@ -7,10 +7,9 @@ import java.util.Arrays;
  */
 public class Rules
 {
-    private boolean[] pegsPresent;
     private Output output;
     private Board board;
-    private static String    blanks      = " ";
+    
     /* {"from", "to", "jumped"} */
     private static int[][] jumpTable = { {0,3,1}, {0,5,2}, {1,6,3}, {1,8,4}, 
             {2,7,4}, {2,9,5}, {3,5,4}, {3,0,1}, {3,10,6}, {3,12,7}, 

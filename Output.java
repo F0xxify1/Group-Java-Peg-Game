@@ -20,7 +20,8 @@ public class Output
     public static final Color CLK_COLOR = Color.WHITE;
     
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
-    private JButton[][] buttons = new JButton[COL][ROW];
+    private JButton[][] buttons2D = new JButton[ROW][COL];
+    private JButton[] buttons;
     
     private Board board;
     
@@ -29,6 +30,8 @@ public class Output
         board = inBoard;
         frame.setSize(700, 700);
         frame.add(panel);
+        buildTile();
+        arrayTo2D();
     }
     
     public void buildTile()
@@ -39,14 +42,16 @@ public class Output
         {
             for(int c = 0; c < COL; c++)
             {
-                buttons[c][r] = this.getDefButton();
+                buttons2D[r][c] = this.getDefButton(buttonNum);
                 if (!arrayTo2DContains(buttonNum)) 
-                    buttons[c][r].setEnabled(false);
+                    buttons2D[r][c].setEnabled(false);
                 else {
-                    buttons[c][r].setBackground(PEG_COLOR);
-                    buttons[c][r].setForeground(buttons[c][r].getBackground());
+                    buttons2D[r][c].setBackground(PEG_COLOR);
+                    if(buttonNum == ARRAY_TO_2D[0])
+                        buttons2D[r][c].setBackground(CLK_COLOR);
+                    buttons2D[r][c].setForeground(buttons2D[r][c].getBackground());
                 }
-                panel.add(buttons[c][r]);
+                panel.add(buttons2D[r][c]);
                 buttonNum ++;
             }
         }
@@ -57,24 +62,35 @@ public class Output
         frame.setVisible(!frame.isVisible());
     }
     
-    public JButton getDefButton()
+    public JButton getDefButton(int number)
     {
         JButton temp = new JButton();
-        temp.setBackground(DEF_COLOR);
+        temp.setToolTipText(Integer.toString(number));
+        temp.setBackground(Color.BLUE);
         temp.setForeground(temp.getBackground());
         temp.addActionListener(new TileListener(this, board));
         temp.setBorderPainted(false);
         return temp;
     }
     
-    public JButton arrayTo2D()
+    public void arrayTo2D()
     {
-        for(int i = 0; i < (ROW * COL); i++)
+        int buttonNum = 0;
+        JButton[] tempArray = new JButton[15];
+        
+        for(int r = 0; r < ROW; r++)
         {
-            for(int j = 0; j < (ROW * COL); j++)
-                return new JButton();
+            for(int c = 0; c < COL; c++)
+            {
+                if(Integer.parseInt(buttons2D[r][c].getToolTipText()) == ARRAY_TO_2D[buttonNum])
+                {
+                    tempArray[buttonNum] = buttons2D[r][c];
+                    tempArray[buttonNum].setToolTipText(Integer.toString(buttonNum));
+                    buttonNum ++;
+                }
+            }
         }
-        return new JButton();
+        buttons = tempArray;
     }
     
     public boolean arrayTo2DContains(int temp){
@@ -85,17 +101,17 @@ public class Output
         return false;
     }
     
-    public void setOutputToArray()
+    public void setOutputToArray(JButton button)
     {
-        for(int i = 0; i < 15; i++){
-            JButton temp = arrayTo2D();
+        for(int i = 0; i < 15; i++)
+        {
+            JButton temp = buttons[i];
             if (board.getPosition(i) == false){
                 temp.setBackground(this.CLK_COLOR);
             }else{
                 temp.setBackground(this.PEG_COLOR);
             }
             temp.setForeground(temp.getBackground());
-            
         }
     }
 }

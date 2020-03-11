@@ -31,5 +31,10 @@ public class Board
     {
         positions[pos] = value;
     }
+    
+    public void togglePosition(int pos)
+    {
+        positions[pos] = !positions[pos];
+    }
 }
 

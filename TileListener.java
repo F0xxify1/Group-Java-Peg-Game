@@ -21,8 +21,8 @@ public class TileListener implements ActionListener
         public void actionPerformed(ActionEvent e)
         {
             JButton temp = (JButton) e.getSource();
-            board.setPosition(0, !board.getPosition(0));
-            output.setOutputToArray();
+            board.togglePosition(Integer.parseInt(temp.getToolTipText()));
+            output.setOutputToArray(temp);
         }
         
     }

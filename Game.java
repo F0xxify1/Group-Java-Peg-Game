@@ -15,10 +15,7 @@ public class Game
      */
     public static void main(String[] args)
     {
-        output.buildTile();
         output.toggleVisible();
-        output.setOutputToArray();
-        System.out.println(rules.isWinner());
     }
     
 }
