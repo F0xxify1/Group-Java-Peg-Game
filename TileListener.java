@@ -6,7 +6,6 @@ import javax.swing.*;
  * @author Blake Fox
  * @finalVersion 3/11/2020
  * 
- * Should it be calling Game.rules? It is static in the Game class... or should it be passed in as a param?
  */
 public class TileListener implements ActionListener
 {   
@@ -28,10 +27,6 @@ public class TileListener implements ActionListener
     {
         JButton temp = (JButton) e.getSource();
         int i = Integer.parseInt(temp.getToolTipText());
-        if(board.getPosition(i) == true)
-        {
-            temp.setBackground(output.PEG_PRESS);
-        }
         rules.addStroke(i);
         output.update();
     }

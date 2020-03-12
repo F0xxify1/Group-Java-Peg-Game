@@ -14,7 +14,7 @@ public class Output
     private static final int ROW = 5;
     private static final int COL = 9;
     
-    public static final Color DEF_COLOR = Color.BLACK;
+    public static final Color DEF_COLOR = Color.BLUE;
     public static final Color PEG_COLOR = Color.YELLOW;
     public static final Color PEG_PRESS = Color.GREEN;
     public static final Color CLK_COLOR = Color.WHITE;
@@ -24,6 +24,7 @@ public class Output
     private JButton[] buttons;
     
     private Board board;
+    private Rules rules;
     /**
      * Sets the size of the game window
      * @param sets size of board using board class
@@ -40,8 +41,9 @@ public class Output
      * Changes color for buttons clicked
      * @param Creates a gridlayout for virtual buttons
      */
-    public void buildTile(Rules rules)
+    public void buildTile(Rules inRules)
     {
+        rules = inRules;
         int buttonNum = 0;
         panel.setLayout(new GridLayout(ROW, COL));
         for(int r = 0; r < ROW; r++)
@@ -78,7 +80,7 @@ public class Output
     {
         JButton temp = new JButton();
         temp.setToolTipText(Integer.toString(number));
-        temp.setBackground(Color.BLUE);
+        temp.setBackground(DEF_COLOR);
         temp.setForeground(temp.getBackground());
         temp.addActionListener(new TileListener(this, board, rules));
         temp.setBorderPainted(false);
@@ -127,20 +129,41 @@ public class Output
         for(int i = 0; i < 15; i++)
         {
             JButton temp = buttons[i];
-            if (board.getPosition(i) == false){
-                temp.setBackground(this.CLK_COLOR);
-            }else{
-                temp.setBackground(this.PEG_COLOR);
-            }
+            int text = Integer.parseInt(temp.getToolTipText());
+            if (text != rules.getStroke(0) && text != rules.getStroke(1))
+                if (board.getPosition(i) == false){
+                    temp.setBackground(this.CLK_COLOR);
+                }else{
+                    temp.setBackground(this.PEG_COLOR);
+                }
             temp.setForeground(temp.getBackground());
         }
     }
     
-    public void win()
+    public void win(int moves)
     {
+        UIManager ui = new UIManager();
+        ui.put("OptionPane.okButtonText", "Close");
+        ui.put("Button.background", PEG_COLOR);
+        ui.put("OptionPane.background", DEF_COLOR);
+        ui.put("Panel.background", DEF_COLOR);
+        ui.put("OptionPane.messageForeground", CLK_COLOR);
+        
         JPanel win = new JPanel();
         int dialogButton = JOptionPane.DEFAULT_OPTION;
-        int dialogResult;
-        dialogResult = JOptionPane.showConfirmDialog(win, " Done!", "Game Over", dialogButton, 1);//returns winner dialog
+        
+        JOptionPane.showConfirmDialog(win, "You're Done! You made " + moves + " moves.", "Game Over", dialogButton, 1);//returns winner dialog
+        System.exit(0);
+    }
+    
+    public void togglePressed(int i)
+    {
+        if(i != -1)
+        {
+            if(buttons[i].getBackground() == PEG_PRESS)
+                buttons[i].setBackground(PEG_COLOR);
+            else
+                buttons[i].setBackground(PEG_PRESS);
+        }
     }
 }

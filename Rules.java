@@ -23,7 +23,8 @@ public class Rules
         {13,11,12}, {13, 4, 8}, {14,12,13}, {14, 5, 9} };
     
     private String winner;
-    private ArrayList<Integer> numberPressed = new ArrayList<Integer>();
+    private ArrayList<Integer> numberPressed = new ArrayList<Integer>(Arrays.asList(-1, -1));
+    private int moves = 0;
     
     public Rules(Output inOutput, Board inBoard)
     {
@@ -36,14 +37,28 @@ public class Rules
      */
     public void addStroke(int buttonNumber)
     {
-        numberPressed.add(buttonNumber);
-        if(numberPressed.size() >= 2){
-            if(canMove(numberPressed.get(0), numberPressed.get(1)) != -1){
-                makeMove(numberPressed.get(0), numberPressed.get(1));
-                numberPressed.remove(0);
-            }
-            numberPressed.remove(0);
+        numberPressed.set(0, numberPressed.get(1));
+        numberPressed.set(1, buttonNumber);
+        System.out.println(numberPressed.get(0));
+        //System.out.println(" " + numberPressed.get(1));
+        if (makeMove(numberPressed.get(0), numberPressed.get(1)))
+        {
+            numberPressed.clear();
+            numberPressed.add(-1);
+            numberPressed.add(-1);
+        }else{
+            output.togglePressed(numberPressed.get(0));
+            System.out.println(numberPressed.get(0));
         }
+        output.togglePressed(numberPressed.get(1));
+        output.update();
+        if(isWinner())
+            output.win(moves);
+    }
+    
+    public int getStroke(int i)
+    {
+        return numberPressed.get(i);
     }
     
     /**
@@ -57,23 +72,24 @@ public class Rules
                 return jumpTable[i][2]; // returns jumpPos and break
             }
         }
-        return -1;
+        return -1; 
     }
     
     /**
      * @param checks if can makeMove
      */
-    public void makeMove(int fromPos, int toPos)
+    public boolean makeMove(int fromPos, int toPos)
     {
-        board.setPosition(fromPos, false);
-        board.setPosition(toPos, true);
-        board.setPosition(canMove(toPos, fromPos), false);
-        output.update();
-        if(isWinner() == true)
+        if (canMove(fromPos, toPos) != -1)
         {
-            output.win();
+            board.setPosition(fromPos, false);
+            board.setPosition(toPos, true);
+            board.setPosition(canMove(toPos, fromPos), false);
+            output.update();
+            moves++;
+            return true;
         }
-        
+        return false;
     }
     
     /**
