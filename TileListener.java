@@ -5,6 +5,8 @@ import javax.swing.*;
  * 
  * @author Blake Fox
  * @finalVersion 3/11/2020
+ * 
+ * Should it be calling Game.rules? It is static in the Game class... or should it be passed in as a param?
  */
 public class TileListener implements ActionListener
     {

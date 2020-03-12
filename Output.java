@@ -25,6 +25,9 @@ public class Output
     
     private Board board;
     
+    /**
+     * 
+     */
     public Output(Board inBoard)
     {
         board = inBoard;
@@ -34,6 +37,9 @@ public class Output
         arrayTo2D();
     }
     
+    /**
+     * 
+     */
     public void buildTile()
     {
         int buttonNum = 0;
@@ -57,11 +63,17 @@ public class Output
         }
     }
     
+    /**
+     * 
+     */
     public void toggleVisible()
     {
         frame.setVisible(!frame.isVisible());
     }
     
+    /**
+     * 
+     */
     public JButton getDefButton(int number)
     {
         JButton temp = new JButton();
@@ -73,6 +85,9 @@ public class Output
         return temp;
     }
     
+    /**
+     * 
+     */
     public void arrayTo2D()
     {
         int buttonNum = 0;
@@ -93,6 +108,9 @@ public class Output
         buttons = tempArray;
     }
     
+    /**
+     * 
+     */
     public boolean arrayTo2DContains(int temp){
         for (int element : ARRAY_TO_2D) {
             if (element == temp)
@@ -101,6 +119,9 @@ public class Output
         return false;
     }
     
+    /**
+     * 
+     */
     public void update()
     {
         for(int i = 0; i < 15; i++)
@@ -114,4 +135,5 @@ public class Output
             temp.setForeground(temp.getBackground());
         }
     }
+    
 }
