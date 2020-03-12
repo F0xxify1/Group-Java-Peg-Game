@@ -19,28 +19,19 @@ public class Board
             positions[i] = true;
         }
     }
-<<<<<<< HEAD
 
     /**
      * @param returns peg position
      */
-    public int getPosition(int pos)
-=======
-    
     public boolean getPosition(int pos)
->>>>>>> 062a303d131c3ed90fa6e83e96e212295a861fb3
     {
         return positions[pos]; 
     }
-<<<<<<< HEAD
+    
     /**
      * @param sets the peg position w/ value
      */
-    public void setPosition(int pos, int value)
-=======
-    
     public void setPosition(int pos, boolean value)
->>>>>>> 062a303d131c3ed90fa6e83e96e212295a861fb3
     {
         positions[pos] = value;
     }
