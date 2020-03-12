@@ -12,11 +12,13 @@ public class TileListener implements ActionListener
     {
         private Output output;
         private Board board;
+        private Rules rules;
         
-        public TileListener(Output inOutput, Board inBoard)
+        public TileListener(Output inOutput, Board inBoard, Rules inRules)
         {
             output = inOutput;
             board = inBoard;
+            rules = inRules;
         }
         
         public void actionPerformed(ActionEvent e)
@@ -28,7 +30,7 @@ public class TileListener implements ActionListener
                 temp.setBackground(output.PEG_PRESS);
             }
             System.out.println(i);
-            Game.rules.addStroke(i);
+            rules.addStroke(i);
             output.update();
         }
         

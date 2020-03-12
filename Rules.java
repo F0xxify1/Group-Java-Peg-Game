@@ -33,12 +33,12 @@ public class Rules
     public void addStroke(int buttonNumber)
     {
         numberPressed.add(buttonNumber);
-        if(numberPressed.size() == 2){
+        if(numberPressed.size() >= 2){
             if(canMove(numberPressed.get(0), numberPressed.get(1)) != -1){
-                System.out.println(canMove(numberPressed.get(0), numberPressed.get(1)));
                 makeMove(numberPressed.get(0), numberPressed.get(1));
+            }else{
+                numberPressed.remove(numberPressed.size() - 1);
             }
-            
             numberPressed.clear();
         }
     }
@@ -66,6 +66,10 @@ public class Rules
         System.out.println("Skip: " + canMove(toPos, fromPos));
         board.setPosition(canMove(toPos, fromPos), false);
         output.update();
+        if(isWinner() == true)
+        {
+            
+        }
     }
     
     public boolean isWinner()

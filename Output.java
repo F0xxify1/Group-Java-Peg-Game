@@ -32,15 +32,14 @@ public class Output
     {
         board = inBoard;
         frame.setSize(700, 700);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
-        buildTile();
-        arrayTo2D();
     }
     
     /**
      * 
      */
-    public void buildTile()
+    public void buildTile(Rules rules)
     {
         int buttonNum = 0;
         panel.setLayout(new GridLayout(ROW, COL));
@@ -48,7 +47,7 @@ public class Output
         {
             for(int c = 0; c < COL; c++)
             {
-                buttons2D[r][c] = this.getDefButton(buttonNum);
+                buttons2D[r][c] = this.getDefButton(buttonNum, rules);
                 if (!arrayTo2DContains(buttonNum)) 
                     buttons2D[r][c].setEnabled(false);
                 else {
@@ -74,13 +73,13 @@ public class Output
     /**
      * 
      */
-    public JButton getDefButton(int number)
+    public JButton getDefButton(int number, Rules rules)
     {
         JButton temp = new JButton();
         temp.setToolTipText(Integer.toString(number));
         temp.setBackground(Color.BLUE);
         temp.setForeground(temp.getBackground());
-        temp.addActionListener(new TileListener(this, board));
+        temp.addActionListener(new TileListener(this, board, rules));
         temp.setBorderPainted(false);
         return temp;
     }
@@ -135,5 +134,6 @@ public class Output
             temp.setForeground(temp.getBackground());
         }
     }
+    
     
 }

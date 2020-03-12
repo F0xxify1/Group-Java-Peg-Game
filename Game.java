@@ -15,6 +15,8 @@ public class Game
      */
     public static void main(String[] args)
     {
+        output.buildTile(rules);
+        output.arrayTo2D();
         output.toggleVisible();
     }
     
