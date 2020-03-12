@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.Arrays;
 import javax.swing.*;
 /**
  * Graphics handler for the Java Peg Game
@@ -17,6 +16,7 @@ public class Output
     
     public static final Color DEF_COLOR = Color.BLACK;
     public static final Color PEG_COLOR = Color.YELLOW;
+    public static final Color PEG_PRESS = Color.GREEN;
     public static final Color CLK_COLOR = Color.WHITE;
     
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
@@ -101,7 +101,7 @@ public class Output
         return false;
     }
     
-    public void setOutputToArray(JButton button)
+    public void update()
     {
         for(int i = 0; i < 15; i++)
         {

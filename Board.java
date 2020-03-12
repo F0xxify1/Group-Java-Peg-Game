@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
 /**
  *Creates Board and sets and gets positions of pegs
  *

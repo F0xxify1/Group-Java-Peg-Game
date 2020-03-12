@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 /**
@@ -21,8 +20,14 @@ public class TileListener implements ActionListener
         public void actionPerformed(ActionEvent e)
         {
             JButton temp = (JButton) e.getSource();
-            board.togglePosition(Integer.parseInt(temp.getToolTipText()));
-            output.setOutputToArray(temp);
+            int i = Integer.parseInt(temp.getToolTipText());
+            if(board.getPosition(i) == true)
+            {
+                temp.setBackground(output.PEG_PRESS);
+            }
+            System.out.println(i);
+            Game.rules.addStroke(i);
+            output.update();
         }
         
     }
