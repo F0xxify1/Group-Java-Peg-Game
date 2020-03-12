@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 /**
@@ -6,21 +5,35 @@ import javax.swing.*;
  * 
  * @author Blake Fox
  * @finalVersion 3/11/2020
+ * 
+ * Should it be calling Game.rules? It is static in the Game class... or should it be passed in as a param?
  */
 public class TileListener implements ActionListener
-    {   
-        /**
-         * @param ActionEvent passes in the action
-         */
-        public void actionPerformed(ActionEvent e)
+{   
+
+    {
+        private Output output;
+        private Board board;
+
+        public TileListener(Output inOutput, Board inBoard)
         {
-            JButton temp = (JButton) e.getSource();
-            if (temp.getBackground() == Output.PEG_COLOR){
-                temp.setBackground(Output.CLK_COLOR);
-                temp.setForeground(temp.getBackground());
-            }else{
-                temp.setBackground(Output.PEG_COLOR);
-                temp.setForeground(temp.getBackground());
-            }
-        }
+        output = inOutput;
+        board = inBoard;
     }
+
+    /**
+     * @param ActionEvent passes in the action
+     */
+    public void actionPerformed(ActionEvent e)
+    {
+        JButton temp = (JButton) e.getSource();
+        int i = Integer.parseInt(temp.getToolTipText());
+        if(board.getPosition(i) == true)
+        {
+            temp.setBackground(output.PEG_PRESS);
+        }
+        System.out.println(i);
+        Game.rules.addStroke(i);
+        output.update();
+    }
+}

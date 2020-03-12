@@ -1,5 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
 /**
  *Creates Board and sets and gets positions of pegs
  *
@@ -8,33 +6,48 @@ import java.awt.*;
  */
 public class Board
 {
-    private int[] positions;
+    private boolean[] positions;
     /**
      * Constructor for objects of class Board
      */
     public Board()
     {
-        positions = new int[15];
-        positions[0] = 0;
+        positions = new boolean[15];
+        positions[0] = false;
         for(int i = 1; i < positions.length; i++)
         {
-            positions[i] = 1;
+            positions[i] = true;
         }
     }
+<<<<<<< HEAD
 
     /**
      * @param returns peg position
      */
     public int getPosition(int pos)
+=======
+    
+    public boolean getPosition(int pos)
+>>>>>>> 062a303d131c3ed90fa6e83e96e212295a861fb3
     {
         return positions[pos]; 
     }
+<<<<<<< HEAD
     /**
      * @param sets the peg position w/ value
      */
     public void setPosition(int pos, int value)
+=======
+    
+    public void setPosition(int pos, boolean value)
+>>>>>>> 062a303d131c3ed90fa6e83e96e212295a861fb3
     {
         positions[pos] = value;
+    }
+    
+    public void togglePosition(int pos)
+    {
+        positions[pos] = !positions[pos];
     }
 }
 
