@@ -8,7 +8,7 @@
 public class Rules
 {
     private static boolean[] pegsPresent = new boolean[15];
-    private static String    blanks      = " ";
+    private static String blanks = " ";
     /* {"from", "to", "jumped"} */
     private static int jumpTable[][] = { {0,3,1}, {0,5,2}, {1,6,3}, {1,8,4}, 
             {2,7,4}, {2,9,5}, {3,5,4}, {3,0,1}, {3,10,6}, {3,12,7}, 
@@ -21,10 +21,11 @@ public class Rules
 
     String winner;
     public Rules()
-    {
-        
+    {    
     }  
-
+    /**
+     * @param checks if move is legal or illegal from fromPos to toPos
+     */
     public int canMove(int fromPos, int toPos)
     {
         for(int i = 0; i < jumpTable.length; i++)
@@ -34,6 +35,9 @@ public class Rules
         }
         return -1;
     }
+    /**
+     * @param checks if can makeMove
+     */
 
     public void makeMove(int fromPos, int toPos)
     {
@@ -43,7 +47,9 @@ public class Rules
 
         }
     }
-
+    /**
+     * @param checks if player wins
+     */
     public boolean isWinner()
     {
         boolean winner = false;

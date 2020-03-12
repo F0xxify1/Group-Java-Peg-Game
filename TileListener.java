@@ -8,10 +8,10 @@ import javax.swing.*;
  * @finalVersion 3/11/2020
  */
 public class TileListener implements ActionListener
-    {
-        
-        
-        
+    {   
+        /**
+         * @param ActionEvent passes in the action
+         */
         public void actionPerformed(ActionEvent e)
         {
             JButton temp = (JButton) e.getSource();

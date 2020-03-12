@@ -4,7 +4,7 @@ import java.awt.*;
  *Creates Board and sets and gets positions of pegs
  *
  * @author Jacob Directo, Blake Fox, Cooper Hornstrom
- * @version 3/5/2020
+ * @finalVersion 3/5/2020
  */
 public class Board
 {
@@ -22,11 +22,16 @@ public class Board
         }
     }
 
+    /**
+     * @param returns peg position
+     */
     public int getPosition(int pos)
     {
-        return positions[pos];
+        return positions[pos]; 
     }
-
+    /**
+     * @param sets the peg position w/ value
+     */
     public void setPosition(int pos, int value)
     {
         positions[pos] = value;

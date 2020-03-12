@@ -5,7 +5,7 @@ import javax.swing.*;
  * Graphics handler for the Java Peg Game
  *
  * @author Blake Fox
- * @finalversion 3/11/2020
+ * @finalVersion 3/11/2020
  */
 public class Output
 {
@@ -18,13 +18,17 @@ public class Output
     public static final Color CLK_COLOR = Color.WHITE;
     public static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
     private JButton[][] buttons = new JButton[COL][ROW];
-    
+    /**
+     * Sets the size of the game window
+     */
     public Output()
     {
         frame.setSize(700, 700);
         frame.add(panel);
     }
-    
+    /**
+     * Changes color for buttons clicked
+     */
     public void buildTile()
     {
         int buttonNum = 0;
@@ -45,7 +49,9 @@ public class Output
             }
         }
     }
-    
+    /**
+     * 
+     */
     public void toggleVisible()
     {
         frame.setVisible(!frame.isVisible());
