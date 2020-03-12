@@ -32,7 +32,6 @@ public class TileListener implements ActionListener
         {
             temp.setBackground(output.PEG_PRESS);
         }
-        System.out.println(i);
         rules.addStroke(i);
         output.update();
     }

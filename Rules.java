@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 /**
  * Checks Rules for legal and illegal moves and winner
  * 
@@ -55,9 +56,6 @@ public class Rules
         for(int i = 0; i < jumpTable.length; i++)
         {
             if(fromPos == jumpTable[i][0] && toPos == jumpTable[i][1] && board.getPosition(jumpTable[i][0]) == true && board.getPosition(jumpTable[i][1]) == false && board.getPosition(jumpTable[i][2]) == true){
-                System.out.println("From: " + fromPos);
-                System.out.println(" To : " + toPos);
-                
                 return jumpTable[i][2]; // returns jumpPos and break
             }
         }
@@ -71,14 +69,11 @@ public class Rules
     {
         board.setPosition(fromPos, false);
         board.setPosition(toPos, true);
-        System.out.println("From: " + fromPos);
-        System.out.println(" To : " + toPos);
-        System.out.println("Skip: " + canMove(toPos, fromPos));
         board.setPosition(canMove(toPos, fromPos), false);
         output.update();
         if(isWinner() == true)
         {
-            
+            output.win();
         }
         
     }
@@ -92,17 +87,14 @@ public class Rules
         {
             for(int j = 0; j < 15; j++)
             {
-                for(int k = 0; k < 15; k++)
-                {
-                    if(i != j && i != k && j != k){
-                        if(board.getPosition(i) == false && board.getPosition(j) == true && board.getPosition(k) == false){
-                            return true;
-                        }
+                if(canMove(i, j) > -1){
+                    if(board.getPosition(i) == true && board.getPosition(j) == false && board.getPosition(canMove(i, j)) == true){
+                        return false;
                     }
                 }
             }
         }
-        return false;
+        return true;
     }
     
 }
