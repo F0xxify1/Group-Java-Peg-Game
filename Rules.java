@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 /**
  * Checks Rules for legal and illegal moves and winner
  * 
@@ -41,10 +40,9 @@ public class Rules
         if(numberPressed.size() >= 2){
             if(canMove(numberPressed.get(0), numberPressed.get(1)) != -1){
                 makeMove(numberPressed.get(0), numberPressed.get(1));
-            }else{
-                numberPressed.remove(numberPressed.size() - 1);
+                numberPressed.remove(0);
             }
-            numberPressed.clear();
+            numberPressed.remove(0);
         }
     }
     
