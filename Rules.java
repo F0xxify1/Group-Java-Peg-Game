@@ -94,7 +94,7 @@ public class Rules
     }
     
     /**
-     * @param checks if player wins
+     * checks if player wins
      */
     public boolean isWinner()
     {
