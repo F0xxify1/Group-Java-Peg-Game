@@ -33,6 +33,7 @@ public class Output
     {
         board = inBoard;
         frame.setSize(700, 700);
+        frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
     }
@@ -51,8 +52,9 @@ public class Output
             for(int c = 0; c < COL; c++)
             {
                 buttons2D[r][c] = this.getDefButton(buttonNum, rules);
-                if (!arrayTo2DContains(buttonNum)) 
+                if (!arrayTo2DContains(buttonNum)){
                     buttons2D[r][c].setEnabled(false);
+                }
                 else {
                     buttons2D[r][c].setForeground(buttons2D[r][c].getBackground());
                 }
