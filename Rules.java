@@ -29,6 +29,7 @@ public class Rules
      * allows rules to access output and board
      * @param inOutput from Rules class
      * @param inBoard from Board class
+     */
     public Rules(Output inOutput, Board inBoard)
     {
         output = inOutput;
