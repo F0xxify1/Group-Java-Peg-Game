@@ -36,7 +36,9 @@ public class Board
     {
         positions[pos] = value;
     }
-    
+    /**
+     * @param creates and int for position
+     */
     public void togglePosition(int pos)
     {
         positions[pos] = !positions[pos];

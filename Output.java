@@ -136,7 +136,9 @@ public class Output
                 }
         }
     }
-    
+    /**
+     * @param demonstrates steps on how win
+     */
     public void win(int moves)
     {
         UIManager ui = new UIManager();

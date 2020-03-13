@@ -25,7 +25,9 @@ public class Rules
     private String winner;
     private ArrayList<Integer> numberPressed = new ArrayList<Integer>(Arrays.asList(-1, -1));
     private int moves = 0;
-    
+    /**
+     * @param allows rules to access output and board
+     */
     public Rules(Output inOutput, Board inBoard)
     {
         output = inOutput;
@@ -52,7 +54,9 @@ public class Rules
         if(isWinner())
             output.win(moves);
     }
-    
+    /**
+     * @param returns i for number pressed
+     */
     public int getStroke(int i)
     {
         return numberPressed.get(i);
@@ -90,7 +94,7 @@ public class Rules
     }
     
     /**
-     * @param checks if player wins
+     * checks if player wins
      */
     public boolean isWinner()
     {
@@ -107,7 +111,9 @@ public class Rules
         }
         return true;
     }
-    
+    /**
+     * returns the score
+     */
     public int getScore()
     {
         int score = 0;

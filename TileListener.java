@@ -14,7 +14,7 @@ public class TileListener implements ActionListener
     private Rules rules;
     
     /**
-     * 
+     * @param allows class tile listener to access class output, boaqrd, and rules
      */
     public TileListener(Output inOutput, Board inBoard, Rules inRules)
     {
@@ -30,6 +30,12 @@ public class TileListener implements ActionListener
     {
         JButton temp = (JButton) e.getSource();
         int i = Integer.parseInt(temp.getToolTipText());
+        if(board.getPosition(i) == true)
+        {
+            temp.setBackground(output.PEG_PRESS);
+        }
+        System.out.println(i);
+
         rules.addStroke(i);
         output.update();
     }
