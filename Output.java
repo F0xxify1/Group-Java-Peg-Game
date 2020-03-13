@@ -79,8 +79,7 @@ public class Output
     {
         JButton temp = new JButton();
         temp.setToolTipText(Integer.toString(number));
-        temp.setBackground(DEF_COLOR);
-        temp.setForeground(temp.getBackground());
+        temp.setIcon(new ImageIcon("DEF_COLOR"));
         temp.addActionListener(new TileListener(this, board, rules));
         temp.setBorderPainted(false);
         return temp;
@@ -131,11 +130,10 @@ public class Output
             int text = Integer.parseInt(temp.getToolTipText());
             if (text != rules.getStroke(0) && text != rules.getStroke(1))
                 if (board.getPosition(i) == false){
-                    temp.setBackground(this.CLK_COLOR);
+                    buttons[i].setIcon(new ImageIcon("CLK_COLOR"));
                 }else{
-                    temp.setBackground(this.PEG_COLOR);
+                    buttons[i].setIcon(new ImageIcon("PEG_COLOR"));
                 }
-            temp.setForeground(temp.getBackground());
         }
     }
     
@@ -161,10 +159,11 @@ public class Output
     {
         if(i != -1 && board.getPosition(i) == true)
         {
-            if(buttons[i].getBackground() == PEG_PRESS)
-                buttons[i].setBackground(PEG_COLOR);
-            else
-                buttons[i].setBackground(PEG_PRESS);
+            if(buttons[i].getBackground() == PEG_PRESS){
+                buttons[i].setIcon(new ImageIcon("PEG_COLOR"));
+            }else{
+                buttons[i].setIcon(new ImageIcon("PEG_PRESS"));
+            }
         }
     }
 }
