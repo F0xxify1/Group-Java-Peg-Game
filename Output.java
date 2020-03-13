@@ -13,11 +13,12 @@ public class Output
     
     private static final int ROW = 5;
     private static final int COL = 9;
+    private static final int SIZE = 700;
     
-    public static final Color DEF_COLOR = Color.BLUE;
-    public static final Color PEG_COLOR = Color.YELLOW;
-    public static final Color PEG_PRESS = Color.GREEN;
-    public static final Color CLK_COLOR = Color.WHITE;
+    public static final ImageIcon DEF_COLOR = new ImageIcon("DEF_COLOR.png", "DEF_COLOR");
+    public static final ImageIcon PEG_COLOR = new ImageIcon("PEG_COLOR.png", "PEG_COLOR");
+    public static final ImageIcon PEG_PRESS = new ImageIcon("PEG_PRESS.jpg", "PEG_PRESS");
+    public static final ImageIcon CLK_COLOR = new ImageIcon("CLK_COLOR.jpg", "CLK_COLOR");
     
     private static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
     private JButton[][] buttons2D = new JButton[ROW][COL];
@@ -32,7 +33,7 @@ public class Output
     public Output(Board inBoard)
     {
         board = inBoard;
-        frame.setSize(700, 700);
+        frame.setSize(SIZE, SIZE);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
@@ -79,9 +80,9 @@ public class Output
     {
         JButton temp = new JButton();
         temp.setToolTipText(Integer.toString(number));
-        temp.setIcon(new ImageIcon("DEF_COLOR"));
         temp.addActionListener(new TileListener(this, board, rules));
         temp.setBorderPainted(false);
+        temp.setIcon(DEF_COLOR);
         return temp;
     }
 
@@ -102,7 +103,8 @@ public class Output
                     tempArray[buttonNum] = buttons2D[r][c];
                     tempArray[buttonNum].setToolTipText(Integer.toString(buttonNum));
                     buttonNum ++;
-                }
+                }else
+                    buttons2D[r][c].setToolTipText(null);
             }
         }
         buttons = tempArray;
@@ -130,10 +132,12 @@ public class Output
             int text = Integer.parseInt(temp.getToolTipText());
             if (text != rules.getStroke(0) && text != rules.getStroke(1))
                 if (board.getPosition(i) == false){
-                    buttons[i].setIcon(new ImageIcon("CLK_COLOR"));
+                    buttons[i].setIcon(CLK_COLOR);
                 }else{
-                    buttons[i].setIcon(new ImageIcon("PEG_COLOR"));
+                    buttons[i].setIcon(PEG_COLOR);
                 }
+            
+            buttons[i].setForeground(buttons[i].getBackground());
         }
     }
     /**
@@ -143,10 +147,10 @@ public class Output
     {
         UIManager ui = new UIManager();
         ui.put("OptionPane.okButtonText", "Close");
-        ui.put("Button.background", PEG_COLOR);
-        ui.put("OptionPane.background", DEF_COLOR);
-        ui.put("Panel.background", DEF_COLOR);
-        ui.put("OptionPane.messageForeground", CLK_COLOR);
+        ui.put("Button.background", Color.YELLOW);
+        ui.put("OptionPane.background", Color.BLUE);
+        ui.put("Panel.background", Color.BLUE);
+        ui.put("OptionPane.messageForeground", Color.WHITE);
         
         JDialog win = new JDialog();
         int dialogButton = JOptionPane.DEFAULT_OPTION;
@@ -161,11 +165,12 @@ public class Output
     {
         if(i != -1 && board.getPosition(i) == true)
         {
-            if(buttons[i].getBackground() == PEG_PRESS){
-                buttons[i].setIcon(new ImageIcon("PEG_COLOR"));
+            if(buttons[i].getIcon() == PEG_PRESS){
+                buttons[i].setIcon(PEG_COLOR);
             }else{
-                buttons[i].setIcon(new ImageIcon("PEG_PRESS"));
+                buttons[i].setIcon(PEG_PRESS);
             }
+            buttons[i].setForeground(buttons[i].getBackground());
         }
     }
 }

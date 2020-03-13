@@ -32,10 +32,8 @@ public class TileListener implements ActionListener
         int i = Integer.parseInt(temp.getToolTipText());
         if(board.getPosition(i) == true)
         {
-            temp.setBackground(output.PEG_PRESS);
+            temp.setIcon(new ImageIcon("PEG_PRESS.jpg"));
         }
-        System.out.println(i);
-
         rules.addStroke(i);
         output.update();
     }
