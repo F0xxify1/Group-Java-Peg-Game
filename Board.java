@@ -22,7 +22,9 @@ public class Board
     }
 
     /**
-     * @param returns peg position
+     * returns peg position
+     * @param pos
+     * position to get
      */
     public boolean getPosition(int pos)
     {
@@ -30,14 +32,20 @@ public class Board
     }
     
     /**
-     * @param sets the peg position w/ value
+     * sets the peg position w/ value
+     * @param pos 
+     * position to set
+     * @param value
+     * value to set
      */
     public void setPosition(int pos, boolean value)
     {
         positions[pos] = value;
     }
     /**
-     * @param creates and int for position
+     * creates and int for position
+     * @param pos
+     * position to toggle
      */
     public void togglePosition(int pos)
     {
