@@ -26,7 +26,9 @@ public class Rules
     private ArrayList<Integer> numberPressed = new ArrayList<Integer>(Arrays.asList(-1, -1));
     private int moves = 0;
     /**
-     * @param allows rules to access output and board
+     * allows rules to access output and board
+     * @param inOutput from Rules class
+     * @param inBoard from Board class
      */
     public Rules(Output inOutput, Board inBoard)
     {
@@ -35,7 +37,8 @@ public class Rules
     }
     
     /**
-     * @param creates number positions for the canMove methode
+     * creates number positions for the canMove methode
+     * @param buttonNumber Index of button
      */
     public void addStroke(int buttonNumber)
     {
@@ -55,7 +58,8 @@ public class Rules
             output.win(moves);
     }
     /**
-     * @param returns i for number pressed
+     * returns i number pressed
+     * @param i number of times pressed
      */
     public int getStroke(int i)
     {
@@ -63,7 +67,9 @@ public class Rules
     }
     
     /**
-     * @param checks if move is legal or illegal from fromPos to toPos
+     * checks if move is legal or illegal from fromPos to toPos
+     * @param fromPos initial index of selected
+     * @param toPos final index of selected
      */
     public int canMove(int fromPos, int toPos)
     {
@@ -77,7 +83,9 @@ public class Rules
     }
     
     /**
-     * @param checks if can makeMove
+     * checks if can makeMove
+     * @param fromPos initial index of selected
+     * @param toPos final index of selected
      */
     public boolean makeMove(int fromPos, int toPos)
     {

@@ -28,7 +28,8 @@ public class Output
     private Rules rules;
     /**
      * Sets the size of the game window
-     * @param sets size of board using board class
+     * @param inBoard
+     * sets size of board using board class
      */
     public Output(Board inBoard)
     {
@@ -41,7 +42,8 @@ public class Output
 
     /**
      * Changes color for buttons clicked
-     * @param Creates a gridlayout for virtual buttons
+     * @param inRules 
+     * Creates a gridlayout for virtual buttons
      */
     public void buildTile(Rules inRules)
     {
@@ -74,7 +76,11 @@ public class Output
     }
 
     /**
-     * @param Changes color for the different tiles
+     * Changes color for the different tiles
+     * @param number
+     * Index of button
+     * @param rules
+     * from Rules class
      */
     public JButton getDefButton(int number, Rules rules)
     {
