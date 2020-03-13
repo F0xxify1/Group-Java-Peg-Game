@@ -6,14 +6,16 @@ import javax.swing.*;
  * @author Blake Fox
  * @finalVersion 3/11/2020
  * 
- * Should it be calling Game.rules? It is static in the Game class... or should it be passed in as a param?
  */
 public class TileListener implements ActionListener
 {   
     private Output output;
     private Board board;
     private Rules rules;
-
+    
+    /**
+     * @param allows class tile listener to access class output, boaqrd, and rules
+     */
     public TileListener(Output inOutput, Board inBoard, Rules inRules)
     {
         output = inOutput;
@@ -33,6 +35,7 @@ public class TileListener implements ActionListener
             temp.setBackground(output.PEG_PRESS);
         }
         System.out.println(i);
+
         rules.addStroke(i);
         output.update();
     }

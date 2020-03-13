@@ -23,8 +23,11 @@ public class Rules
         {13,11,12}, {13, 4, 8}, {14,12,13}, {14, 5, 9} };
     
     private String winner;
-    private ArrayList<Integer> numberPressed = new ArrayList<Integer>();
-    
+    private ArrayList<Integer> numberPressed = new ArrayList<Integer>(Arrays.asList(-1, -1));
+    private int moves = 0;
+    /**
+     * @param allows rules to access output and board
+     */
     public Rules(Output inOutput, Board inBoard)
     {
         output = inOutput;
@@ -36,15 +39,27 @@ public class Rules
      */
     public void addStroke(int buttonNumber)
     {
-        numberPressed.add(buttonNumber);
-        if(numberPressed.size() >= 2){
-            if(canMove(numberPressed.get(0), numberPressed.get(1)) != -1){
-                makeMove(numberPressed.get(0), numberPressed.get(1));
-            }else{
-                numberPressed.remove(numberPressed.size() - 1);
-            }
+        numberPressed.set(0, numberPressed.get(1));
+        numberPressed.set(1, buttonNumber);
+        if (makeMove(numberPressed.get(0), numberPressed.get(1)))
+        {
             numberPressed.clear();
+            numberPressed.add(-1);
+            numberPressed.add(-1);
+        }else{
+            output.togglePressed(numberPressed.get(0));
         }
+        output.togglePressed(numberPressed.get(1));
+        output.update();
+        if(isWinner())
+            output.win(moves);
+    }
+    /**
+     * @param returns i for number pressed
+     */
+    public int getStroke(int i)
+    {
+        return numberPressed.get(i);
     }
     
     /**
@@ -55,32 +70,27 @@ public class Rules
         for(int i = 0; i < jumpTable.length; i++)
         {
             if(fromPos == jumpTable[i][0] && toPos == jumpTable[i][1] && board.getPosition(jumpTable[i][0]) == true && board.getPosition(jumpTable[i][1]) == false && board.getPosition(jumpTable[i][2]) == true){
-                System.out.println("From: " + fromPos);
-                System.out.println(" To : " + toPos);
-                
                 return jumpTable[i][2]; // returns jumpPos and break
             }
         }
-        return -1;
+        return -1; 
     }
     
     /**
      * @param checks if can makeMove
      */
-    public void makeMove(int fromPos, int toPos)
+    public boolean makeMove(int fromPos, int toPos)
     {
-        board.setPosition(fromPos, false);
-        board.setPosition(toPos, true);
-        System.out.println("From: " + fromPos);
-        System.out.println(" To : " + toPos);
-        System.out.println("Skip: " + canMove(toPos, fromPos));
-        board.setPosition(canMove(toPos, fromPos), false);
-        output.update();
-        if(isWinner() == true)
+        if (canMove(fromPos, toPos) != -1)
         {
-            
+            board.setPosition(fromPos, false);
+            board.setPosition(toPos, true);
+            board.setPosition(canMove(toPos, fromPos), false);
+            output.update();
+            moves++;
+            return true;
         }
-        
+        return false;
     }
     
     /**
@@ -92,17 +102,29 @@ public class Rules
         {
             for(int j = 0; j < 15; j++)
             {
-                for(int k = 0; k < 15; k++)
-                {
-                    if(i != j && i != k && j != k){
-                        if(board.getPosition(i) == false && board.getPosition(j) == true && board.getPosition(k) == false){
-                            return true;
-                        }
+                if(canMove(i, j) > -1){
+                    if(board.getPosition(i) == true && board.getPosition(j) == false && board.getPosition(canMove(i, j)) == true){
+                        return false;
                     }
                 }
             }
         }
-        return false;
+        return true;
     }
-    
+    /**
+     * returns the score
+     */
+    public int getScore()
+    {
+        int score = 0;
+        if(moves == 13)
+            return 100;
+        if(moves == 12)
+            return 50;
+        if(moves == 11)
+            return 25;
+        if(moves == 10)
+            return 6;
+        return score;
+    }
 }

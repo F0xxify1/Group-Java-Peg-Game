@@ -17,6 +17,7 @@ public class Game
     {
         output.buildTile(rules);
         output.arrayTo2D();
+        output.update();
         output.toggleVisible();
     }
     
