@@ -4,7 +4,7 @@ import javax.swing.*;
  * Graphics handler for the Java Peg Game
  *
  * @author Blake Fox
- * @finalVersion 3/11/2020
+ * @finalVersion 3/11/2020 \
  */
 public class Output
 {
@@ -54,9 +54,6 @@ public class Output
                 if (!arrayTo2DContains(buttonNum)) 
                     buttons2D[r][c].setEnabled(false);
                 else {
-                    buttons2D[r][c].setBackground(PEG_COLOR);
-                    if(buttonNum == ARRAY_TO_2D[0])
-                        buttons2D[r][c].setBackground(CLK_COLOR);
                     buttons2D[r][c].setForeground(buttons2D[r][c].getBackground());
                 }
                 panel.add(buttons2D[r][c]);
@@ -149,16 +146,18 @@ public class Output
         ui.put("Panel.background", DEF_COLOR);
         ui.put("OptionPane.messageForeground", CLK_COLOR);
         
-        JPanel win = new JPanel();
+        JDialog win = new JDialog();
         int dialogButton = JOptionPane.DEFAULT_OPTION;
-        
-        JOptionPane.showConfirmDialog(win, "You're Done! You made " + moves + " moves.", "Game Over", dialogButton, 1);//returns winner dialog
-        System.exit(0);
+        if(rules.getScore() >= 50)
+            JOptionPane.showConfirmDialog(win, "Great job! You score is " + rules.getScore() + " points!", "Congradulations!", dialogButton, 1);//returns winner dialog
+        else
+            JOptionPane.showConfirmDialog(win, "Try again. You score is " + rules.getScore() + " points.", "Game Over", dialogButton, 1);//returns winner dialog
+        System.exit(0);//Closes the game
     }
     
     public void togglePressed(int i)
     {
-        if(i != -1)
+        if(i != -1 && board.getPosition(i) == true)
         {
             if(buttons[i].getBackground() == PEG_PRESS)
                 buttons[i].setBackground(PEG_COLOR);

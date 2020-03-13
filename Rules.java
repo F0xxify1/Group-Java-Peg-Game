@@ -39,8 +39,6 @@ public class Rules
     {
         numberPressed.set(0, numberPressed.get(1));
         numberPressed.set(1, buttonNumber);
-        System.out.println(numberPressed.get(0));
-        //System.out.println(" " + numberPressed.get(1));
         if (makeMove(numberPressed.get(0), numberPressed.get(1)))
         {
             numberPressed.clear();
@@ -48,7 +46,6 @@ public class Rules
             numberPressed.add(-1);
         }else{
             output.togglePressed(numberPressed.get(0));
-            System.out.println(numberPressed.get(0));
         }
         output.togglePressed(numberPressed.get(1));
         output.update();
@@ -111,4 +108,17 @@ public class Rules
         return true;
     }
     
+    public int getScore()
+    {
+        int score = 0;
+        if(moves == 13)
+            return 100;
+        if(moves == 12)
+            return 50;
+        if(moves == 11)
+            return 25;
+        if(moves == 10)
+            return 6;
+        return score;
+    }
 }

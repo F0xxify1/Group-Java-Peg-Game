@@ -12,7 +12,10 @@ public class TileListener implements ActionListener
     private Output output;
     private Board board;
     private Rules rules;
-
+    
+    /**
+     * 
+     */
     public TileListener(Output inOutput, Board inBoard, Rules inRules)
     {
         output = inOutput;

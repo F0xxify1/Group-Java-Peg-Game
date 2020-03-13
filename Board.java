@@ -7,17 +7,18 @@
 public class Board
 {
     private boolean[] positions;
+    private int startingPosition = 0;
     /**
      * Constructor for objects of class Board
      */
     public Board()
     {
         positions = new boolean[15];
-        positions[0] = false;
-        for(int i = 1; i < positions.length; i++)
+        for(int i = 0; i < positions.length; i++)
         {
             positions[i] = true;
         }
+        positions[startingPosition] = false;
     }
 
     /**
