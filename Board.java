@@ -22,9 +22,9 @@ public class Board
     }
 
     /**
-     * returns peg position
-     * @param pos
-     * position to get
+     * This method gets the position value
+     * @param int index value to get
+     * @return boolean true if peg in slot
      */
     public boolean getPosition(int pos)
     {
@@ -33,19 +33,17 @@ public class Board
     
     /**
      * sets the peg position w/ value
-     * @param pos 
-     * position to set
-     * @param value
-     * value to set
+     * @param int index value to set
+     * @param boolean value to set
      */
     public void setPosition(int pos, boolean value)
     {
         positions[pos] = value;
     }
+    
     /**
-     * creates and int for position
-     * @param pos
-     * position to toggle
+     * inverts boolean value in position
+     * @param int position to toggle
      */
     public void togglePosition(int pos)
     {

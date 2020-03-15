@@ -25,10 +25,11 @@ public class Rules
     private String winner;
     private ArrayList<Integer> numberPressed = new ArrayList<Integer>(Arrays.asList(-1, -1));
     private int moves = 0;
+    
     /**
-     * allows rules to access output and board
-     * @param inOutput from Rules class
-     * @param inBoard from Board class
+     * Constructor of class Rules
+     * @param Output output object
+     * @param Board board object
      */
     public Rules(Output inOutput, Board inBoard)
     {
@@ -37,8 +38,8 @@ public class Rules
     }
     
     /**
-     * creates number positions for the canMove methode
-     * @param buttonNumber Index of button
+     * Adds the index of the button pressed to the stroke counter
+     * @param int index position of button to be added
      */
     public void addStroke(int buttonNumber)
     {
@@ -57,9 +58,11 @@ public class Rules
         if(isWinner())
             output.win(moves);
     }
+    
     /**
-     * returns i number pressed
-     * @param i number of times pressed
+     * Returns the value of the index in numberPressed
+     * @param int index of numberPressed
+     * @return int index value of the button
      */
     public int getStroke(int i)
     {
@@ -67,9 +70,10 @@ public class Rules
     }
     
     /**
-     * checks if move is legal or illegal from fromPos to toPos
-     * @param fromPos initial index of selected
-     * @param toPos final index of selected
+     * Checks if move is legal or illegal from fromPos to toPos
+     * @param int position moved from
+     * @param int position moved to
+     * @return int index value of jumped peg or -1 if inputs aren't valid
      */
     public int canMove(int fromPos, int toPos)
     {
@@ -83,9 +87,10 @@ public class Rules
     }
     
     /**
-     * checks if can makeMove
-     * @param fromPos initial index of selected
-     * @param toPos final index of selected
+     * Tries to make the move from first index to second
+     * @param int position moved from
+     * @param int position moved to
+     * @return boolean returns true if the move was made, false if it wasn't
      */
     public boolean makeMove(int fromPos, int toPos)
     {
@@ -102,7 +107,8 @@ public class Rules
     }
     
     /**
-     * checks if player wins
+     * Checks if there are no more moves
+     * @return boolean returns true if there are no more moves
      */
     public boolean isWinner()
     {
@@ -119,8 +125,10 @@ public class Rules
         }
         return true;
     }
+    
     /**
-     * returns the score
+     * Returns the current score based on the number of moves
+     * @return int score
      */
     public int getScore()
     {

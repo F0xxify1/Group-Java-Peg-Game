@@ -4,7 +4,7 @@ import javax.swing.*;
  * Graphics handler for the Java Peg Game
  *
  * @author Blake Fox
- * @finalVersion 3/11/2020 \
+ * @finalVersion 3/11/2020
  */
 public class Output
 {
@@ -13,12 +13,12 @@ public class Output
     
     private static final int ROW = 5;
     private static final int COL = 9;
-    private static final int SIZE = 700;
+    private static final int SIZE = 800;
     
-    public static final ImageIcon DEF_COLOR = new ImageIcon("DEF_COLOR.png", "DEF_COLOR");
-    public static final ImageIcon PEG_COLOR = new ImageIcon("PEG_COLOR.png", "PEG_COLOR");
-    public static final ImageIcon PEG_PRESS = new ImageIcon("PEG_PRESS.jpg", "PEG_PRESS");
-    public static final ImageIcon CLK_COLOR = new ImageIcon("CLK_COLOR.jpg", "CLK_COLOR");
+    public static final Color DEF_COLOR = Color.BLUE;
+    public static final Color PEG_COLOR = Color.YELLOW;
+    public static final Color PEG_PRESS = Color.GREEN;
+    public static final Color CLK_COLOR = Color.WHITE;
     
     private static final int[] ARRAY_TO_2D = new int[]{4, 12, 14, 20, 22, 24, 28, 30, 32, 34, 36, 38, 40, 42, 44};
     private JButton[][] buttons2D = new JButton[ROW][COL];
@@ -28,8 +28,7 @@ public class Output
     private Rules rules;
     /**
      * Sets the size of the game window
-     * @param inBoard
-     * sets size of board using board class
+     * @param Board board object
      */
     public Output(Board inBoard)
     {
@@ -42,8 +41,7 @@ public class Output
 
     /**
      * Changes color for buttons clicked
-     * @param inRules 
-     * Creates a gridlayout for virtual buttons
+     * @param Creates a gridlayout for virtual buttons
      */
     public void buildTile(Rules inRules)
     {
@@ -55,9 +53,9 @@ public class Output
             for(int c = 0; c < COL; c++)
             {
                 buttons2D[r][c] = this.getDefButton(buttonNum, rules);
-                if (!arrayTo2DContains(buttonNum)){
+                buttons2D[r][c].setToolTipText(Integer.toString(buttonNum));
+                if (!arrayTo2DContains(buttonNum)) 
                     buttons2D[r][c].setEnabled(false);
-                }
                 else {
                     buttons2D[r][c].setForeground(buttons2D[r][c].getBackground());
                 }
@@ -68,7 +66,7 @@ public class Output
     }
 
     /**
-     * Sets the window to visible
+     * Toggles the window visibility
      */
     public void toggleVisible()
     {
@@ -76,24 +74,23 @@ public class Output
     }
 
     /**
-     * Changes color for the different tiles
-     * @param number
-     * Index of button
-     * @param rules
-     * from Rules class
+     * Gets a new JButton set with default values
+     * @param int number of button in grid
+     * @param Rules rules object
+     * @return Default Button
      */
     public JButton getDefButton(int number, Rules rules)
     {
         JButton temp = new JButton();
-        temp.setToolTipText(Integer.toString(number));
+        temp.setBackground(DEF_COLOR);
+        temp.setForeground(temp.getBackground());
         temp.addActionListener(new TileListener(this, board, rules));
         temp.setBorderPainted(false);
-        temp.setIcon(DEF_COLOR);
         return temp;
     }
 
     /**
-     * Creates array of buttons
+     * Changes the 2d buton array to a single array
      */
     public void arrayTo2D()
     {
@@ -109,26 +106,27 @@ public class Output
                     tempArray[buttonNum] = buttons2D[r][c];
                     tempArray[buttonNum].setToolTipText(Integer.toString(buttonNum));
                     buttonNum ++;
-                }else
-                    buttons2D[r][c].setToolTipText(null);
+                }
             }
         }
         buttons = tempArray;
     }
 
     /**
-     * @param Creates temporary variable for the virtual array to 2D array
+     * Checks if the value appears in ARRAY_TO_2D
+     * @param int value to check
+     * @return boolean
      */
-    public boolean arrayTo2DContains(int temp){
+    public boolean arrayTo2DContains(int value){
         for (int element : ARRAY_TO_2D) {
-            if (element == temp)
+            if (element == value)
                 return true;
         }
         return false;
     }
 
     /**
-     * @param Sets background color for the peg positions
+     * Updates the output to the array in the board object
      */
     public void update()
     {
@@ -138,25 +136,26 @@ public class Output
             int text = Integer.parseInt(temp.getToolTipText());
             if (text != rules.getStroke(0) && text != rules.getStroke(1))
                 if (board.getPosition(i) == false){
-                    buttons[i].setIcon(CLK_COLOR);
+                    temp.setBackground(this.CLK_COLOR);
                 }else{
-                    buttons[i].setIcon(PEG_COLOR);
+                    temp.setBackground(this.PEG_COLOR);
                 }
-            
-            buttons[i].setForeground(buttons[i].getBackground());
+            temp.setForeground(temp.getBackground());
         }
     }
+    
     /**
-     * @param demonstrates steps on how win
+     * Defines what happens when the game is over
+     * @param int number of moves the player took
      */
     public void win(int moves)
     {
         UIManager ui = new UIManager();
         ui.put("OptionPane.okButtonText", "Close");
-        ui.put("Button.background", Color.YELLOW);
-        ui.put("OptionPane.background", Color.BLUE);
-        ui.put("Panel.background", Color.BLUE);
-        ui.put("OptionPane.messageForeground", Color.WHITE);
+        ui.put("Button.background", PEG_COLOR);
+        ui.put("OptionPane.background", DEF_COLOR);
+        ui.put("Panel.background", DEF_COLOR);
+        ui.put("OptionPane.messageForeground", CLK_COLOR);
         
         JDialog win = new JDialog();
         int dialogButton = JOptionPane.DEFAULT_OPTION;
@@ -167,16 +166,18 @@ public class Output
         System.exit(0);//Closes the game
     }
     
+    /**
+     * Toggles the background from pressed to normal and vice versa
+     * @param int index position to toggle
+     */
     public void togglePressed(int i)
     {
         if(i != -1 && board.getPosition(i) == true)
         {
-            if(buttons[i].getIcon() == PEG_PRESS){
-                buttons[i].setIcon(PEG_COLOR);
-            }else{
-                buttons[i].setIcon(PEG_PRESS);
-            }
-            buttons[i].setForeground(buttons[i].getBackground());
+            if(buttons[i].getBackground() == PEG_PRESS)
+                buttons[i].setBackground(PEG_COLOR);
+            else
+                buttons[i].setBackground(PEG_PRESS);
         }
     }
 }

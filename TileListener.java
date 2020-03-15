@@ -14,7 +14,10 @@ public class TileListener implements ActionListener
     private Rules rules;
     
     /**
-     * @param allows class tile listener to access class output, boaqrd, and rules
+     * Default TileListener for each button
+     * @param Output output object
+     * @param Board board object
+     * @param Rules rules object
      */
     public TileListener(Output inOutput, Board inBoard, Rules inRules)
     {
@@ -24,16 +27,13 @@ public class TileListener implements ActionListener
     }
 
     /**
-     * @param ActionEvent passes in the action
+     * Runs each time a button is pressed
+     * @param event that occurred
      */
     public void actionPerformed(ActionEvent e)
     {
         JButton temp = (JButton) e.getSource();
         int i = Integer.parseInt(temp.getToolTipText());
-        if(board.getPosition(i) == true)
-        {
-            temp.setIcon(new ImageIcon("PEG_PRESS.jpg"));
-        }
         rules.addStroke(i);
         output.update();
     }
